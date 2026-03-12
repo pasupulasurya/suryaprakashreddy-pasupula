@@ -583,6 +583,114 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(255,255,255,.03);display:fl
 footer p{font-family:var(--fm);font-size:.55rem;color:var(--muted);letter-spacing:.2em}
 footer a{color:var(--teal-dim);text-decoration:none;transition:color .3s}footer a:hover{color:var(--teal)}
 
+/* ══ TYPEWRITER ══ */
+.tw-wrap{display:inline-block;position:relative}
+.tw-cursor{
+  display:inline-block;width:3px;height:.85em;
+  background:var(--teal);margin-left:4px;
+  vertical-align:middle;
+  animation:twBlink .7s step-end infinite;
+}
+@keyframes twBlink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ══ RESUME BUTTON ══ */
+.btn-resume{
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:.9rem 2.2rem;
+  font-family:var(--fm);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);background:transparent;
+  border:1px solid var(--teal-dim);
+  text-decoration:none;cursor:none;
+  position:relative;overflow:hidden;
+  transition:all .3s;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+}
+.btn-resume::before{
+  content:'';position:absolute;inset:0;
+  background:var(--teal-glow);
+  transform:translateX(-101%);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.btn-resume:hover{border-color:var(--teal);color:#a0f0ff}
+.btn-resume:hover::before{transform:translateX(0)}
+.btn-resume svg{width:14px;height:14px;flex-shrink:0;position:relative}
+.btn-resume span{position:relative}
+
+/* ══ CONTACT FORM ══ */
+.cf-wrap{
+  max-width:640px;margin:3rem auto 0;
+  background:rgba(0,212,200,.02);
+  border:1px solid rgba(0,212,200,.1);
+  padding:2.5rem;
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));
+  position:relative;
+}
+.cf-wrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--teal-dim),transparent);
+}
+.cf-title{
+  font-family:var(--fm);font-size:.6rem;color:var(--teal-dim);
+  letter-spacing:.4em;text-transform:uppercase;
+  margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;
+}
+.cf-title::before{content:'';flex:0 0 24px;height:1px;background:var(--teal-dim)}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.cf-field{display:flex;flex-direction:column;gap:.5rem}
+.cf-field.full{grid-column:1/-1}
+.cf-label{
+  font-family:var(--fm);font-size:.55rem;color:var(--smoke);
+  letter-spacing:.2em;text-transform:uppercase;
+}
+.cf-input,.cf-textarea{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.06);
+  color:var(--white);
+  font-family:var(--fm);font-size:.65rem;letter-spacing:.05em;
+  padding:.8rem 1rem;
+  outline:none;
+  transition:border-color .3s,background .3s,box-shadow .3s;
+  width:100%;
+}
+.cf-input:focus,.cf-textarea:focus{
+  border-color:var(--teal-dim);
+  background:rgba(0,212,200,.03);
+  box-shadow:0 0 0 3px rgba(0,212,200,.05);
+}
+.cf-input::placeholder,.cf-textarea::placeholder{color:var(--muted)}
+.cf-textarea{resize:vertical;min-height:120px}
+.cf-btn{
+  margin-top:1.5rem;width:100%;
+  padding:1rem;
+  font-family:var(--fm);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--black);background:var(--teal);
+  border:none;cursor:pointer;
+  position:relative;overflow:hidden;
+  transition:all .3s;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+}
+.cf-btn::before{
+  content:'';position:absolute;inset:0;
+  background:#fff;transform:translateX(-101%);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.cf-btn:hover::before{transform:translateX(0)}
+.cf-btn span{position:relative}
+/* Success / error states */
+.cf-msg{
+  margin-top:1rem;padding:.8rem 1rem;
+  font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;
+  text-align:center;display:none;
+}
+.cf-msg.success{
+  border:1px solid rgba(0,212,200,.3);
+  color:var(--teal);background:rgba(0,212,200,.05);
+}
+.cf-msg.error{
+  border:1px solid rgba(255,80,80,.3);
+  color:#ff6060;background:rgba(255,80,80,.05);
+}
+
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}.nls{display:none}
   #hero{padding:0 6vw}.hst{display:none}
@@ -594,6 +702,7 @@ footer a{color:var(--teal-dim);text-decoration:none;transition:color .3s}footer 
   .pg{grid-template-columns:1fr}.sw{padding:0 1.5rem}
   .exi{padding:5rem 1.5rem 3rem}.jw{padding:2rem 1.5rem 5rem}
   footer{flex-direction:column;gap:1rem;text-align:center}.cls{flex-direction:column;align-items:center}
+  .cf-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -640,7 +749,9 @@ footer a{color:var(--teal-dim);text-decoration:none;transition:color .3s}footer 
   <div class="hey">Software Engineer · Data Analytics · Applied AI/ML</div>
   <div class="hfn">SURYA</div>
   <div class="hln">PRAKASH REDDY</div>
-  <p class="hro">Building <strong>production-grade analytics systems</strong><br>& scalable <strong>ML-driven solutions</strong> that power real decisions.</p>
+  <p class="hro">
+    <span class="tw-wrap"><span id="tw-text"></span><span class="tw-cursor"></span></span>
+  </p>
   <div class="htags">
     <div class="htag"><span>SQL</span></div><div class="htag"><span>Python</span></div>
     <div class="htag"><span>AI / ML</span></div><div class="htag"><span>BI Dashboards</span></div>
@@ -648,7 +759,11 @@ footer a{color:var(--teal-dim);text-decoration:none;transition:color .3s}footer 
   </div>
   <div class="hcta">
     <a href="#experience" class="btnp mag" data-navlink data-label="Journey" data-num="02"><span>View My Journey</span></a>
-    <a href="mailto:Pasupulasuryaprakashreddy@gmail.com" class="btno mag">Get In Touch</a>
+    <a href="mailto:suryaprakashreddy9908@gmail.com" class="btno mag">Get In Touch</a>
+    <a href="resume.pdf" download="Suryaprakash_Reddy_Resume.pdf" class="btn-resume mag">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span>Resume</span>
+    </a>
   </div>
   <div class="hst">
     <div class="stc"><div class="sn">3+</div><div class="sl">Years Experience</div></div>
@@ -951,22 +1066,63 @@ footer a{color:var(--teal-dim);text-decoration:none;transition:color .3s}footer 
     <div class="slb rev" style="justify-content:center">05 — Contact</div>
     <h2 class="ctt rev" style="transition-delay:.1s">Let's Build<br><span>Something</span><br>Together</h2>
     <p class="cts rev" style="transition-delay:.2s">Seeking full-time roles in <em style="color:var(--teal)">Data Analytics</em> & <em style="color:var(--teal)">Applied AI/ML</em>.<br>Ready to contribute to production-grade analytics and scalable ML solutions.</p>
-    <div class="cem rev" style="transition-delay:.3s"><a href="mailto:Pasupulasuryaprakashreddy@gmail.com">Pasupulasuryaprakashreddy@gmail.com</a></div>
+    <div class="cem rev" style="transition-delay:.3s"><a href="mailto:suryaprakashreddy9908@gmail.com">suryaprakashreddy9908@gmail.com</a></div>
     <div class="cls rev" style="transition-delay:.4s">
       <a href="tel:5618877710" class="clink"><span class="cli">📞</span><span>(561) 887-7710</span></a>
-      <a href="https://www.linkedin.com/in/suryaprakashreddy-pasupula" target="_blank" class="clink"><span class="cli">◈</span><span>LinkedIn Profile</span></a>
-      <a href="mailto:Pasupulasuryaprakashreddy@gmail.com" class="clink"><span class="cli">✉</span><span>Send Email</span></a>
+      <a href="https://www.linkedin.com/in/suryaprakash-reddy-pasupula/" target="_blank" class="clink"><span class="cli">◈</span><span>LinkedIn Profile</span></a>
+      <a href="mailto:suryaprakashreddy9908@gmail.com" class="clink"><span class="cli">✉</span><span>Send Email</span></a>
     </div>
-    <a href="mailto:Pasupulasuryaprakashreddy@gmail.com" class="btnp mag rev" style="transition-delay:.5s;display:inline-flex"><span>Start a Conversation →</span></a>
+
+    <!-- CONTACT FORM -->
+    <div class="cf-wrap rev" style="transition-delay:.5s">
+      <div class="cf-title">Send a Message</div>
+      <div id="cf-success" style="display:none;text-align:center;padding:2rem">
+        <div style="font-size:2rem;margin-bottom:1rem">✅</div>
+        <div style="font-family:var(--fd);font-size:1.4rem;color:var(--teal);letter-spacing:.1em">Message Sent!</div>
+        <div style="font-family:var(--fm);font-size:.6rem;color:var(--smoke);margin-top:.5rem;letter-spacing:.15em">I'll get back to you within 24 hours.</div>
+      </div>
+      <form id="cf-form" action="https://formspree.io/f/suryaprakashreddy9908@gmail.com" method="POST">
+        <div class="cf-grid">
+          <div class="cf-field">
+            <label class="cf-label" for="cf-name">Your Name</label>
+            <input class="cf-input" type="text" id="cf-name" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-email">Your Email</label>
+            <input class="cf-input" type="email" id="cf-email" name="email" placeholder="john@company.com" required>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-subject">Subject</label>
+            <input class="cf-input" type="text" id="cf-subject" name="subject" placeholder="Job Opportunity · Collaboration">
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-company">Company</label>
+            <input class="cf-input" type="text" id="cf-company" name="company" placeholder="Your Company">
+          </div>
+          <div class="cf-field full">
+            <label class="cf-label" for="cf-msg">Message</label>
+            <textarea class="cf-textarea" id="cf-msg" name="message" rows="5" placeholder="Tell me about the role or project..." required></textarea>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:1.5rem">
+          <button type="submit" class="btnp mag cf-btn" id="cf-submit">
+            <span id="cf-btn-txt">Send Message →</span>
+          </button>
+        </div>
+        <input type="hidden" name="_replyto" value="suryaprakashreddy9908@gmail.com">
+        <input type="hidden" name="_subject" value="New Portfolio Contact — Surya">
+      </form>
+    </div>
+
   </div>
 </section>
 
 <footer>
   <p>© 2025 Suryaprakash Reddy Pasupula</p>
-  <p>Software Engineer · Data Analytics · AI/ML &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/suryaprakashreddy-pasupula" target="_blank">LinkedIn</a></p>
+  <p>Software Engineer · Data Analytics · AI/ML &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/suryaprakash-reddy-pasupula/" target="_blank">LinkedIn</a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══ LOADER ══ */
 (function(){
   const STEPS=['Initializing systems...','Loading data modules...','Compiling analytics...','Calibrating AI engine...','Rendering portfolio...','Ready.'];
@@ -1201,6 +1357,54 @@ document.querySelectorAll('.mag').forEach(btn=>{
   btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.15}px,${(e.clientY-(r.top+r.height/2))*.15}px)`;});
   btn.addEventListener('mouseleave',()=>btn.style.transform='');
 });
+
+/* ══ TYPEWRITER EFFECT ══ */
+(function(){
+  const el=document.getElementById('tw-text');
+  if(!el)return;
+  const lines=[
+    'Building production-grade analytics systems',
+    'Designing scalable ML-driven solutions',
+    'Transforming raw data into actionable insights',
+    'Engineering data pipelines that power decisions',
+  ];
+  let li=0,ci=0,deleting=false,pause=false;
+  function tick(){
+    if(pause)return;
+    const current=lines[li];
+    if(!deleting){
+      ci++;el.textContent=current.slice(0,ci);
+      if(ci===current.length){pause=true;setTimeout(()=>{pause=false;deleting=true;},2200);}
+      else setTimeout(tick,45+Math.random()*30);
+    }else{
+      ci--;el.textContent=current.slice(0,ci);
+      if(ci===0){deleting=false;li=(li+1)%lines.length;setTimeout(tick,400);}
+      else setTimeout(tick,22);
+    }
+  }
+  setTimeout(tick,2200);
+})();
+
+/* ══ CONTACT FORM — Formspree ══ */
+(function(){
+  const form=document.getElementById('cf-form');
+  const successBox=document.getElementById('cf-success');
+  const btnTxt=document.getElementById('cf-btn-txt');
+  if(!form)return;
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    btnTxt.textContent='Sending...';
+    const data=new FormData(form);
+    try{
+      const res=await fetch('https://formspree.io/f/xdkopaqb',{method:'POST',body:data,headers:{Accept:'application/json'}});
+      if(res.ok){form.style.display='none';successBox.style.display='block';}
+      else{btnTxt.textContent='Try again →';alert('Something went wrong. Please email suryaprakashreddy9908@gmail.com directly.');}
+    }catch(err){
+      btnTxt.textContent='Try again →';
+      alert('Network error. Please email suryaprakashreddy9908@gmail.com directly.');
+    }
+  });
+})();
 </script>
 </body>
 </html>
