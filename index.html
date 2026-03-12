@@ -1396,7 +1396,7 @@ document.querySelectorAll('.mag').forEach(btn=>{
     btnTxt.textContent='Sending...';
     const data=new FormData(form);
     try{
-      const res=await fetch('https://formspree.io/f/xdkopaqb',{method:'POST',body:data,headers:{Accept:'application/json'}});
+      const res=await fetch('https://formspree.io/f/mzdjgrgy',{method:'POST',body:data,headers:{Accept:'application/json'}});
       if(res.ok){form.style.display='none';successBox.style.display='block';}
       else{btnTxt.textContent='Try again →';alert('Something went wrong. Please email suryaprakashreddy9908@gmail.com directly.');}
     }catch(err){
